@@ -2,7 +2,7 @@
 
 define('HOST', 'localhost');
 define('USER', 'root');
-define('PASSWORD', 'guilherme1');
+define('PASSWORD', 'root');
 define('DATABASE', 'ghost');
 define('TABLE_CASOS', 'casos');
 
@@ -69,7 +69,7 @@ function inserir_caso($numeroCaso, $dataAbertura, $finalizado, $dataEncerramento
     }
 
     // Associe os parâmetros corretamente (finalizado como inteiro)
-    if (!$stmt->bind_param("isssis", $numeroCaso, $dataAbertura, $finalizado, $dataEncerramento, $descricao, $envolvidos)) {
+    if (!$stmt->bind_param("isssss", $numeroCaso, $dataAbertura, $finalizado, $dataEncerramento, $descricao, $envolvidos)) {
         $stmt->close();
         $conn->close();
         throw new Exception("Erro no bind_param: " . $stmt->error);
@@ -105,13 +105,36 @@ function mostrar_todos_casos(){
         }else{
             echo "Nenhum caso encontrado.";
         }
-
-        foreach($casos as $caso){
-
-        }
     
         $result->free();
     $conn->close();
+
+    echo '<table border="1" style="border-collapse: collapse; width: 100%;">';
+    echo '<thead>';
+    echo '<tr>';
+    echo '<th>Nº do Caso</th>';
+    echo '<th>Data de Abertura</th>';
+    echo '<th>Finalizado?</th>';
+    echo '<th>Descrição</th>';
+    echo '<th>Envolvidos</th>';
+    echo '</tr>';
+    echo '</thead>';
+    echo '<tbody>';
+
+    foreach ($casos as $caso) {
+        echo '<tr style="cursor: pointer;" onclick="window.location.href=\'#\'">';
+        echo '<td>' . htmlspecialchars($caso['numero_caso']) . '</td>';
+        echo '<td>' . htmlspecialchars($caso['data_abertura']) . '</td>';
+        echo '<td>' . ($caso['finalizado'] ? 'Sim' : 'Não') . '</td>';
+        echo '<td>' . htmlspecialchars($caso['descricao']) . '</td>';
+        echo '<td>' . htmlspecialchars($caso['envolvidos']) . '</td>';
+        echo '</tr>';
+    }
+
+    echo '</tbody>';
+    echo '</table>';
+
+    return;
 }
 
 

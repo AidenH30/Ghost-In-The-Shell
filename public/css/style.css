@@ -1,0 +1,29 @@
+/* Ajuste para melhorar as sombras e bordas dos formulários */
+form {
+    max-width: 600px; /* Limita a largura máxima */
+    margin: 20px auto; /* Centraliza na tela */
+}
+
+/* Adiciona transição no hover do botão */
+.btn-primary {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Melhora o efeito ao passar o mouse sobre o botão */
+.btn-primary:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajusta campos de texto e selects */
+.form-control, 
+.form-select {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Realça o campo de texto quando focado */
+.form-control:focus, 
+.form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
