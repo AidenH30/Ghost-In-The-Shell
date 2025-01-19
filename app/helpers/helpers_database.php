@@ -109,18 +109,19 @@ function mostrar_todos_casos(){
         $result->free();
     $conn->close();
 
-    echo '<table border="1" style="border-collapse: collapse; width: 100%;">';
-    echo '<thead>';
+    echo '<div class="table-responsive">';
+    echo '<table class="table table-striped table-hover table-bordered">';
+    echo '<thead class="table-dark">';
     echo '<tr>';
-    echo '<th>Nº do Caso</th>';
-    echo '<th>Data de Abertura</th>';
-    echo '<th>Finalizado?</th>';
-    echo '<th>Descrição</th>';
-    echo '<th>Envolvidos</th>';
+    echo '<th scope="col">Nº do Caso</th>';
+    echo '<th scope="col">Data de Abertura</th>';
+    echo '<th scope="col">Finalizado?</th>';
+    echo '<th scope="col">Descrição</th>';
+    echo '<th scope="col">Envolvidos</th>';
     echo '</tr>';
     echo '</thead>';
     echo '<tbody>';
-
+    
     foreach ($casos as $caso) {
         echo '<tr style="cursor: pointer;" onclick="window.location.href=\'#\'">';
         echo '<td>' . htmlspecialchars($caso['numero_caso']) . '</td>';
@@ -130,9 +131,11 @@ function mostrar_todos_casos(){
         echo '<td>' . htmlspecialchars($caso['envolvidos']) . '</td>';
         echo '</tr>';
     }
-
+    
     echo '</tbody>';
     echo '</table>';
+    echo '</div>';
+    
 
     return;
 }

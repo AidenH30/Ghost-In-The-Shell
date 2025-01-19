@@ -24,21 +24,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Verificar qual botão foi pressionado
     if (isset($_POST['acao'])) {
         $acao = $_POST['acao'];
-
-        if($acao === 'salvar'){
-            if(inserir_caso($numeroCaso, $dataAbertura, $finalizado, $dataEncerramento, $descricao, $envolvidos) === 1){
-                echo "<script>window.alert('Caso registrado!')</script>";
+            
+            if($acao === 'salvar'){
+                if(inserir_caso($numeroCaso, $dataAbertura, $finalizado, $dataEncerramento, $descricao, $envolvidos) === 1){
+                    echo "<script>window.alert('Caso registrado!')</script>";
+                    echo mostrar_todos_casos();
+                }else{
+                    echo "<script>window.alert('Erro ao salvar o caso!')</script>";
+                }
+            } elseif($acao === 'visualizar'){
                 echo mostrar_todos_casos();
-            }else{
-                echo "<script>window.alert('Erro ao salvar o caso!')</script>";
+            } elseif($acao === 'excluir'){
+                echo excluir_caso_selecionado();
             }
-        } elseif($acao === 'visualizar'){
-            echo mostrar_todos_casos();
-        }
 
     } else {
         echo "Nenhuma ação foi selecionada.";
     }
+} else{
+    
 }
 ?>
 
