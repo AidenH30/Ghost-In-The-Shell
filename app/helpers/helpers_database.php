@@ -113,11 +113,9 @@ function mostrar_todos_casos(){
     echo '<table class="table table-striped table-hover table-bordered">';
     echo '<thead class="table-dark">';
     echo '<tr>';
-    echo '<th scope="col">Nº do Caso</th>';
-    echo '<th scope="col">Data de Abertura</th>';
-    echo '<th scope="col">Finalizado?</th>';
-    echo '<th scope="col">Descrição</th>';
-    echo '<th scope="col">Envolvidos</th>';
+    echo '<th scope="col">Nº DO CASO</th>';
+    echo '<th scope="col">DATA DE ABERTURA</th>';
+    echo '<th scope="col">FINALIZADO?</th>';
     echo '</tr>';
     echo '</thead>';
     echo '<tbody>';
@@ -127,8 +125,6 @@ function mostrar_todos_casos(){
         echo '<td>' . htmlspecialchars($caso['numero_caso']) . '</td>';
         echo '<td>' . htmlspecialchars($caso['data_abertura']) . '</td>';
         echo '<td>' . ($caso['finalizado'] ? 'Sim' : 'Não') . '</td>';
-        echo '<td>' . htmlspecialchars($caso['descricao']) . '</td>';
-        echo '<td>' . htmlspecialchars($caso['envolvidos']) . '</td>';
         echo '</tr>';
     }
     
@@ -136,7 +132,6 @@ function mostrar_todos_casos(){
     echo '</table>';
     echo '</div>';
     
-
     return;
 }
 

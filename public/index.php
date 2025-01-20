@@ -9,6 +9,7 @@ create_table();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Document</title>
 </head>
@@ -48,12 +49,12 @@ create_table();
         <textarea class="form-control" id="envolvidos" name="envolvidos" rows="3" placeholder="Digite os envolvidos"></textarea>
     </div>
 
-    <!-- <div class="mb-3">
+    <div class="mb-3">
         <label for="evidencias" class="form-label">Evidências (JPEG/JPG/PDF):</label>
         <input type="file" class="form-control" id="evidencias" name="evidencias" accept=".jpeg,.jpg,.pdf">
-    </div> -->
+    </div>
 
-    <div class="d-flex justify-content-between">
+    <div class="my-div-centralizada-wrap">
         <button type="submit" class="btn btn-primary" name="acao" value="salvar">Salvar</button>
         <button type="submit" class="btn btn-secondary" name="acao" value="arquivar">Arquivar</button>
         <button type="submit" class="btn btn-warning" name="acao" value="encerrar">Encerrar</button>
