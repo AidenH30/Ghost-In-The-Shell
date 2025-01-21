@@ -1,7 +1,15 @@
 <?php
 include_once '../app/helpers/helpers_database.php';
 create_database();
-create_table();
+create_table__users();
+create_table_casos();
+
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../app/controllers/login.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +42,7 @@ create_table();
         </select>
     </div>
 
-    <div id="div-data-encerramento" class="mb-3">
+    <div id="my-div-data-encerramento" class="mb-3">
         <label for="data_encerramento" class="form-label">Data de Encerramento:</label>
         <input type="date" class="form-control" id="data_encerramento" name="data_encerramento">
     </div>

@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } elseif($acao === 'visualizar'){
                 echo mostrar_todos_casos();
             } elseif($acao === 'excluir'){
-                echo excluir_caso_selecionado();
+                //echo excluir_caso_selecionado();
             }
 
     } else {

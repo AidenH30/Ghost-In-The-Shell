@@ -33,7 +33,24 @@ function create_database() {
     $conn->close();
 }
 
-function create_table() {
+function create_table__users(){
+    $conn = open_connection();
+
+    $createTableQuery = "CREATE TABLE IF NOT EXISTS users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(50) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL
+    );";
+
+    if ($conn->query($createTableQuery) !== TRUE) {
+        throw new Exception("Erro ao criar tabela: " . $conn->error);
+    }
+
+    echo "<script>console.log('Tabela criada (ou já existe');</script>";
+    $conn->close();
+}
+
+function create_table_casos() {
     $conn = open_connection();
 
     $createTableQuery = "CREATE TABLE IF NOT EXISTS " . TABLE_CASOS . " (

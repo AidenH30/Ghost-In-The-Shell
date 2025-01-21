@@ -28,6 +28,15 @@ form {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
+.my-div-centralizada{
+    max-width: 600px; /* Limita a largura máxima */
+    margin: 20px auto; /* Centraliza na tela */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .my-div-centralizada-wrap{
     display: flex;
     justify-content: space-evenly;
