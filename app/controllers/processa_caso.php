@@ -1,3 +1,8 @@
+<?php
+require_once '../helpers/helpers_database.php'; 
+require_once '../helpers/helpers.php'; 
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,7 +16,6 @@
 <div class="container mt-4 p-4 border rounded shadow bg-light">
 
 <?php
-require_once '../helpers/helpers_database.php'; 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Recebendo dados do formulário
@@ -28,21 +32,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             if($acao === 'salvar'){
                 if(inserir_caso($numeroCaso, $dataAbertura, $finalizado, $dataEncerramento, $descricao, $envolvidos) === 1){
-                    echo "<script>window.alert('Caso registrado!')</script>";
-                    echo mostrar_todos_casos();
+                    alert("Caso regitrado!");
+                    mostrar_todos_casos();
                 }else{
                     echo "<script>window.alert('Erro ao salvar o caso!')</script>";
                 }
             } elseif($acao === 'visualizar'){
-                echo mostrar_todos_casos();
+                mostrar_todos_casos();
             } elseif($acao === 'excluir'){
                 //echo excluir_caso_selecionado();
             }
 
     } else {
-        echo "Nenhuma ação foi selecionada.";
+        alert("Nenhuma ação foi selecionada.");
     }
 } else{
+    header("Location: ../../public/index.php");
+    exit;
 }
 ?>
 

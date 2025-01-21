@@ -22,6 +22,30 @@ if (!isset($_SESSION['user_id'])) {
     <title>Document</title>
 </head>
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#">
+                <img src="https://via.placeholder.com/40" alt="Logo" class="d-inline-block align-text-top">
+            </a>
+
+            <!-- Botão Responsivo -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Conteúdo da Navbar -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-danger text-white px-4" href="../app/controllers/logout.php">Sair</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
 <form action="../app/controllers/processa_caso.php" method="POST" enctype="multipart/form-data" class="container mt-4 p-4 border rounded shadow bg-light">
     <h2>Registro de Caso</h2> <br> <hr>
     <div class="mb-3">

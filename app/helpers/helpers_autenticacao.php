@@ -1,5 +1,6 @@
 <?php
 require_once 'helpers_database.php';
+require_once 'helpers.php';
 function logar($username, $password){
     $conn = open_connection();
 
@@ -16,10 +17,10 @@ function logar($username, $password){
             $_SESSION['user_id'] = $id;
             return 1;
         } else {
-            echo "Senha inválida.";
+            alert("Senha inválida.");
         }
     } else {
-        echo "Usuário não encontrado.";
+        alert("Usuário não encontrado.");
     }
 
     $stmt->close();
