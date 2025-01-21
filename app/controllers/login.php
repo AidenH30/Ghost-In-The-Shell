@@ -1,40 +1,42 @@
 <?php
 require_once '../helpers/helpers_database.php';
+require_once '../helpers/helpers_autenticacao.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
-
-    // Conexão com o banco
-    $conn = open_connection();
-
-    $stmt = $conn->prepare("SELECT id, password FROM users WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $stmt->store_result();
-
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $hashedPassword);
-        $stmt->fetch();
-
-        if (password_verify($password, $hashedPassword)) {
-            $_SESSION['user_id'] = $id;
-            //header("Location: ../app/controllers/login.php"); exit;
-        } else {
-            echo "Senha inválida.";
-        }
-    } else {
-        echo "Usuário não encontrado.";
+    if(logar($username, $password) === 1){
+        header("Location: ../../public/index.php");
+        exit;
     }
-
-    $stmt->close();
-    $conn->close();
 }
 ?>
 
-<form method="post">
-    <input type="text" name="username" placeholder="Usuário" required>
-    <input type="password" name="password" placeholder="Senha" required>
-    <button type="submit">Entrar</button>
-</form>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../public/css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Entrar</title>
+</head>
+<body>
+    <form class="container mt-4 p-4 border rounded shadow bg-light" method="post">
+        <div class="mb-3">
+            <label for="username" class="form-label">Nome de usuário:</label>
+            <input type="text" name="username" placeholder="Usuário" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Senha:</label>
+            <input type="password" name="password" placeholder="Senha" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Entrar</button>
+    </form>
+</body>
+</html>
+
+
