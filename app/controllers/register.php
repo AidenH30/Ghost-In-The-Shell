@@ -16,17 +16,20 @@ require_once '../helpers/helpers.php';
 <body>
 
 <form class="container mt-4 p-4 border rounded shadow bg-light" method="post">
-    <div class="mb-3">
+        <h2>Registre-se</h2> 
+        <br> 
+        <hr> 
+        <div class="mb-3">
         <label for="username" class="form-label">Nome de usuário:</label>
-        <input type="text" name="username" placeholder="Usuário" required>
-    </div>
+        <input type="text" class="form-control" name="username" placeholder="Digite o nome de usuário...">
+        </div>
 
-    <div class="mb-3">
-        <label for="password" class="form-label">Senha:</label>
-        <input type="password" name="password" placeholder="Senha" required>
-    </div>
-
-    <button type="submit">Criar Conta</button>
+        <div class="mb-3">
+            <label for="password" class="form-label">Senha:</label>
+            <input type="password" class="form-control" name="password" placeholder="Digite a senha..." required>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Criar conta</button>
 </form>
 
 

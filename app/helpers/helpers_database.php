@@ -1,4 +1,6 @@
 <?php
+require_once "helpers.php";
+
 
 define('HOST', 'localhost');
 define('USER', 'root');
@@ -126,30 +128,81 @@ function mostrar_todos_casos(){
         $result->free();
     $conn->close();
 
-    echo '<div class="table-responsive">';
-    echo '<table class="table table-striped table-hover table-bordered">';
-    echo '<thead class="table-dark">';
-    echo '<tr>';
-    echo '<th scope="col">Nº DO CASO</th>';
-    echo '<th scope="col">DATA DE ABERTURA</th>';
-    echo '<th scope="col">FINALIZADO?</th>';
-    echo '</tr>';
-    echo '</thead>';
-    echo '<tbody>';
-    
     foreach ($casos as $caso) {
-        echo '<tr style="cursor: pointer;" onclick="window.location.href=\'#\'">';
-        echo '<td>' . htmlspecialchars($caso['numero_caso']) . '</td>';
-        echo '<td>' . htmlspecialchars($caso['data_abertura']) . '</td>';
-        echo '<td>' . ($caso['finalizado'] ? 'Sim' : 'Não') . '</td>';
-        echo '</tr>';
+        echo '<a href="editar_caso.php?numero_caso=' . urlencode($caso['numero_caso']) . '" style="display: block; margin: 10px 0; padding: 10px; border: 1px solid #ccc; border-radius: 5px; text-decoration: none; background-color: #f8f9fa; color: #333;">';
+        echo 'Nº Caso: ' . htmlspecialchars($caso['numero_caso']) . '<br>';
+        echo 'Data de Abertura: ' . htmlspecialchars($caso['data_abertura']) . '<br>';
+        echo 'Finalizado: ' . ($caso['finalizado'] ? 'Sim' : 'Não');
+        echo '</a>';
     }
     
-    echo '</tbody>';
-    echo '</table>';
-    echo '</div>';
-    
     return;
+}
+
+function editar_caso($numeroCaso, $dataAbertura, $finalizado, $dataEncerramento, $descricao, $envolvidos){
+    $conn = open_connection();
+    $casos = [];
+    $query = "UPDATE " . TABLE_CASOS . " SET 
+    data_abertura = ?, 
+    finalizado = ?,
+    data_encerramento = ?,
+    descricao = ?,
+    envolvidos = ? WHERE numero_caso = ?";
+
+    $stmt = $conn->prepare($query);
+    if (!$stmt) {
+        $conn->close();
+        throw new Exception("Erro ao preparar a query: " . $conn->error);
+    }
+
+    // Associe os parâmetros
+    if (!$stmt->bind_param("sssssi", $dataAbertura, $finalizado, $dataEncerramento, $descricao, $envolvidos,  $numeroCaso)) {
+        $stmt->close();
+        $conn->close();
+        throw new Exception("Erro no bind_param: " . $stmt->error);
+    }
+
+    if (!$stmt->execute()) {
+        $stmt->close();
+        $conn->close();
+        throw new Exception("Erro ao executar a query: " . $stmt->error);
+    }
+
+    $stmt->close();
+    $conn->close();
+
+    return 1;
+}
+
+function excluir_caso($numero_caso){
+    $conn = open_connection();
+    $query = "DELETE FROM casos WHERE numero_caso = $numero_caso";
+    $result = $conn->query($query);
+
+    if(!$result){
+        $conn->close();
+        throw new Exception("Erro ao executar a query: " . $conn->error);
+    }
+
+    $conn->close();
+
+    redirect("../../public/listar_casos.php");
+}
+
+function resetar_bd(){
+    $conn = open_connection();
+    $query = "DROP DATABASE " . DATABASE;
+    $result = $conn->query($query);
+    
+    if(!$result){
+        $conn->close();
+        throw new Exception("Erro ao executar a query: " . $conn->error);
+    }
+
+    echo "Resetado";
+    $conn->close();
+
+    redirect("../../public/index.php");
 }
 
 

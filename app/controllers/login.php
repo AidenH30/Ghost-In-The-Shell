@@ -1,14 +1,16 @@
 <?php
 require_once '../helpers/helpers_database.php';
 require_once '../helpers/helpers_autenticacao.php';
+require_once '../helpers/helpers.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
     if(logar($username, $password) === 1){
-        header("Location: ../../public/index.php");
-        exit;
+        redirect("../../public/index.php");
+    } else{
+        redirect("register.php");
     }
 }
 ?>
@@ -24,16 +26,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <form class="container mt-4 p-4 border rounded shadow bg-light" method="post">
+        <h2>Login</h2> 
+        <br> 
+        <hr> 
         <div class="mb-3">
-            <label for="username" class="form-label">Nome de usuário:</label>
-            <input type="text" name="username" placeholder="Usuário" required>
+        <label for="username" class="form-label">Nome de usuário:</label>
+        <input type="text" class="form-control" name="username" placeholder="Digite o nome de usuário...">
         </div>
 
         <div class="mb-3">
             <label for="password" class="form-label">Senha:</label>
-            <input type="password" name="password" placeholder="Senha" required>
+            <input type="password" class="form-control" name="password" placeholder="Digite a senha..." required>
         </div>
-
+        <br>
         <button type="submit" class="btn btn-primary">Entrar</button>
     </form>
 </body>
