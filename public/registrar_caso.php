@@ -46,12 +46,12 @@ if (!isset($_SESSION['user_id'])) {
     <h2>Registro de Caso</h2> <br> <hr>
     <div class="mb-3">
         <label for="numero_caso" class="form-label">Nº do Caso:</label>
-        <input type="number" class="form-control" id="numero_caso" name="numero_caso" placeholder="Digite o número do caso">
+        <input type="number" class="form-control" id="numero_caso" name="numero_caso" placeholder="Digite o número do caso" required>
     </div>
 
     <div class="mb-3">
         <label for="data_abertura" class="form-label">Data de Abertura:</label>
-        <input type="date" class="form-control" id="data_abertura" name="data_abertura">
+        <input type="date" class="form-control" id="data_abertura" name="data_abertura" required>
     </div>
 
     <div class="mb-3">
@@ -64,17 +64,17 @@ if (!isset($_SESSION['user_id'])) {
 
     <div id="my-div-data-encerramento" class="mb-3">
         <label for="data_encerramento" class="form-label">Data de Encerramento:</label>
-        <input type="date" class="form-control" id="data_encerramento" name="data_encerramento">
+        <input type="date" class="form-control" id="data_encerramento" name="data_encerramento" required>
     </div>
 
     <div class="mb-3">
         <label for="descricao" class="form-label">Descrição:</label>
-        <textarea class="form-control" id="descricao" name="descricao" rows="5" placeholder="Digite a descrição"></textarea>
+        <textarea class="form-control" id="descricao" name="descricao" rows="5" placeholder="Digite a descrição" required></textarea>
     </div>
 
     <div class="mb-3">
         <label for="envolvidos" class="form-label">Envolvidos:</label>
-        <textarea class="form-control" id="envolvidos" name="envolvidos" rows="3" placeholder="Digite os envolvidos"></textarea>
+        <textarea class="form-control" id="envolvidos" name="envolvidos" rows="3" placeholder="Digite os envolvidos" required></textarea>
     </div>
 
     <div class="mb-3">

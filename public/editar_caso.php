@@ -46,12 +46,12 @@ $conn->close();
 
         <div class="mb-3">
             <label for="numero_caso" class="form-label">Nº do Caso:</label>
-            <input type="number" readonly name="numero_caso" class="form-control" value="<?= htmlspecialchars($caso['numero_caso']) ?>">
+            <input required type="number" readonly name="numero_caso" class="form-control" value="<?= htmlspecialchars($caso['numero_caso']) ?>">
         </div>
 
         <div class="mb-3">
             <label for="data_abertura" class="form-label">Data de Abertura:</label>
-            <input type="date" class="form-control" id="data_abertura" name="data_abertura" value="<?= htmlspecialchars($caso['data_abertura']) ?>">
+            <input required  type="date" class="form-control" id="data_abertura" name="data_abertura" value="<?= htmlspecialchars($caso['data_abertura']) ?>">
         </div>
 
         <div class="mb-3">
@@ -64,17 +64,17 @@ $conn->close();
 
         <div class="mb-3">
             <label for="data_encerramento" class="form-label">Data de Encerramento</label>
-            <input type="date" class="form-control" id="data_encerramento" name="data_encerramento" value="<?= htmlspecialchars($caso['data_encerramento']) ?>">
+            <input required type="date" class="form-control" id="data_encerramento" name="data_encerramento" value="<?= htmlspecialchars($caso['data_encerramento']) ?>">
         </div>
 
         <div class="mb-3">
             <label for="descricao" class="form-label">Descrição:</label>
-            <textarea class="form-control" id="descricao" name="descricao" rows="4"><?= htmlspecialchars($caso['descricao']) ?></textarea>
+            <textarea required class="form-control" id="descricao" name="descricao" rows="4"><?= htmlspecialchars($caso['descricao']) ?></textarea>
         </div>
 
         <div class="mb-3">
             <label for="envolvidos" class="form-label">Envolvidos:</label>
-            <textarea class="form-control" id="envolvidos" name="envolvidos" rows="3"><?= htmlspecialchars($caso['envolvidos']) ?></textarea>
+            <textarea required class="form-control" id="envolvidos" name="envolvidos" rows="3"><?= htmlspecialchars($caso['envolvidos']) ?></textarea>
         </div>
 
         <div class="my-div-centralizada-wrap">
