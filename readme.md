@@ -4,4 +4,4 @@
 1. O sistema é um projeto de registro de casos criminais. 
 
 ### O que precisa melhorar?
-2. Apesar do foco principal do projeto funcionar, existem vários casos no código que devem ser tratados futuramente, principalmente na questão de <strong>segurança, design do back-end e documentação</strong>.
+1. Apesar do foco principal do projeto funcionar, existem vários casos no código que devem ser tratados futuramente, principalmente na questão de <strong>segurança, design do back-end e documentação</strong>.
