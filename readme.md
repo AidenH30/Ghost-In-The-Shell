@@ -1,4 +1,4 @@
-## Basta abrir a pasta "public" no navegador que o sistema funcionará.
+### Basta abrir a pasta "public" no navegador que o sistema funcionará. ✅
 
 ### O que é esse projeto?
 1. O sistema é um projeto de registro de casos criminais. 
